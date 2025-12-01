@@ -31,5 +31,5 @@ jobs:
       if: github.ref == 'refs/heads/master'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/newStandalone
+        publish_dir: ./dist/newStandalone/browser
         cname: # Add your custom domain here if you have one

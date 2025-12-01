@@ -10,7 +10,7 @@
     "test": "ng test",
     "serve:api": "json-server src/data/db.json --watch --port 3000",
     "dev": "concurrently \"npm start\" \"npm run serve:api\"",
-    "deploy:ghpages": "ng build --configuration production --base-href=\"/newStandalone/\" && npx angular-cli-ghpages --dir=dist/new-standalone"
+    "deploy:ghpages": "ng build --configuration production --base-href=\"/Angular-20-Exercise-Project-/\" && npx angular-cli-ghpages --dir=dist/newStandalone/browser --repo=https://github.com/MohamedTwfiek-7/Angular-20-Exercise-Project-.git"
   },
   "prettier": {
     "overrides": [
