@@ -5,8 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:api": "json-server src/data/db.json --watch --port 3000",
+    "dev": "concurrently \"npm start\" \"npm run serve:api\"",
+    "deploy:ghpages": "ng build --configuration production --base-href=\"/newStandalone/\" && npx angular-cli-ghpages --dir=dist/new-standalone"
   },
   "prettier": {
     "overrides": [
