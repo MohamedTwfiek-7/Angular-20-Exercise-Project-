@@ -1,0 +1,106 @@
+<div class="about-container">
+    <!-- Header Section -->
+    <section class="about-header">
+        <div class="header-content">
+            <h1 class="page-title">About Our Platform</h1>
+            <p class="page-subtitle">Building the future of web development with modern Angular technologies</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="content-wrapper">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>
+                    We're dedicated to creating innovative web solutions using the latest Angular framework
+                    capabilities.
+                    Our platform demonstrates modern development practices, clean architecture, and user-centric design
+                    principles.
+                </p>
+                <p>
+                    Through continuous learning and adaptation, we strive to deliver exceptional digital experiences
+                    that meet the evolving needs of businesses and users alike.
+                </p>
+            </div>
+            <div class="mission-visual">
+                <mat-icon class="large-icon">trending_up</mat-icon>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            @for(member of teamMembers; track member.id) {
+            <mat-card class="team-card" appearance="outlined">
+                <div class="team-avatar">
+                    <mat-icon>{{member.icon}}</mat-icon>
+                </div>
+                <mat-card-content>
+                    <h3>{{member.name}}</h3>
+                    <p class="role">{{member.role}}</p>
+                    <p class="bio">{{member.bio}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="primary">
+                        <mat-icon>link</mat-icon>
+                        Connect
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            }
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2 class="section-title">Our Values</h2>
+        <div class="values-grid">
+            @for(value of companyValues; track value.title) {
+            <div class="value-item">
+                <div class="value-icon" [ngStyle]="{'background-color': value.color}">
+                    <mat-icon>{{value.icon}}</mat-icon>
+                </div>
+                <h4>{{value.title}}</h4>
+                <p>{{value.description}}</p>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-section">
+        <h2 class="section-title">Technology Stack</h2>
+        <div class="tech-grid">
+            @for(tech of technologies; track tech.name) {
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <mat-icon [ngStyle]="{'color': tech.color}">{{tech.icon}}</mat-icon>
+                </div>
+                <h4>{{tech.name}}</h4>
+                <div class="tech-level">
+                    <div class="level-bar">
+                        <div class="level-fill" [ngStyle]="{'width': tech.level + '%', 'background-color': tech.color}">
+                        </div>
+                    </div>
+                    <span class="level-text">{{tech.level}}%</span>
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Join us in building amazing web experiences with modern Angular development.</p>
+            <div class="cta-buttons">
+                <button mat-raised-button color="primary" routerLink="/contact">Contact Us</button>
+                <button mat-stroked-button routerLink="/customer">View Projects</button>
+            </div>
+        </div>
+    </section>
+</div>

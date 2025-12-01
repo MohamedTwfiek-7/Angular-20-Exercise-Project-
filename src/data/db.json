@@ -1,0 +1,77 @@
+{
+  "users": [
+    {
+      "id": "admin",
+      "name": "admin",
+      "password": "admin",
+      "roles": "admin"
+    },
+    {
+      "id": "user",
+      "name": "user",
+      "password": "user",
+      "roles": "user"
+    },
+    {
+      "id": "ea21",
+      "username": "ahmed",
+      "name": "ahmed",
+      "password": "123",
+      "email": "ahmed@gmail.com",
+      "role": "user",
+      "gender": "male",
+      "terms": true
+    }
+  ],
+  "products": [
+    {
+      "name": "prod 1",
+      "description": "prod 1",
+      "price": 2000,
+      "status": true,
+      "id": "0853"
+    },
+    {
+      "name": "prod 2",
+      "description": "prod 2",
+      "price": 3000,
+      "status": false,
+      "id": "0854"
+    },
+    {
+      "name": "prod 3",
+      "description": "prod 3",
+      "price": 4000,
+      "status": true,
+      "id": "0855"
+    },
+    {
+      "name": "prod 4",
+      "description": "prod 4",
+      "price": 5000,
+      "status": false,
+      "id": "0856"
+    },
+    {
+      "name": "prod 5",
+      "description": "prod 5",
+      "price": 6000,
+      "status": true,
+      "id": "0857"
+    },
+    {
+      "name": "prod 6",
+      "description": "prod 6",
+      "price": 7000,
+      "status": true,
+      "id": "0858"
+    },
+    {
+      "name": "prod 7",
+      "description": "prod 7",
+      "price": 8000,
+      "status": false,
+      "id": "0859"
+    }
+  ]
+}

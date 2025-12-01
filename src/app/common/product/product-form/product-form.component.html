@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ data?.title }}</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="form" (ngSubmit)="save()">
+
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="id" formControlName="id">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="description" formControlName="description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" placeholder="price" formControlName="price">
+            </mat-form-field>
+
+            <mat-slide-toggle formControlName="status">{{ form.value.status? 'Active' : 'Inactive' }}</mat-slide-toggle>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary">Save</button>
+            <a mat-raised-button color="accent" (click)="close()">Cancel</a>
+        </mat-card-actions>
+    </form>
+
+</mat-card>

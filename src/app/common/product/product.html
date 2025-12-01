@@ -1,0 +1,81 @@
+<div class="product-container">
+    <div class="product-header">
+        <div class="header-content">
+            <h1>Product Management</h1>
+            <p>Manage your product catalog and inventory</p>
+        </div>
+        <button mat-raised-button color="primary" (click)="createProduct()" class="add-btn">
+            <mat-icon>add</mat-icon>
+            Add Product
+        </button>
+    </div>
+
+    <div class="product-table-container">
+        <div class="table-wrapper">
+            <table mat-table [dataSource]="dataSource" matSort class="product-table">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef class="id-column">ID</th>
+                    <td mat-cell *matCellDef="let element" class="id-cell">#{{element.id}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+                    <td mat-cell *matCellDef="let element" class="name-cell">{{element.name}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+                    <td mat-cell *matCellDef="let element" class="description-cell">{{element.description}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+                    <td mat-cell *matCellDef="let element" class="price-cell">{{element.price |
+                        currency:'USD':'symbol':'1.2-2'}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                    <td mat-cell *matCellDef="let element" class="status-cell">
+                        <span class="status-badge" [class]="element.status ? 'active' : 'inactive'">
+                            {{element.status ? 'Active' : 'Inactive'}}
+                        </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element" class="action-cell">
+                        <button mat-icon-button color="primary" (click)="editProduct(element)" matTooltip="Edit">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="deleteProduct(element.id)" matTooltip="Delete">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+
+                <tr class="no-data-row" *matNoDataRow>
+                    <td class="no-data-cell" [attr.colspan]="displayedColumns.length">
+                        <div class="no-data-content">
+                            <mat-icon>inventory_2</mat-icon>
+                            <h3>No products found</h3>
+                            <p>Start by adding your first product to the catalog</p>
+                            <button mat-raised-button color="primary" (click)="createProduct()">
+                                <mat-icon>add</mat-icon>
+                                Add Product
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="table-paginator">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

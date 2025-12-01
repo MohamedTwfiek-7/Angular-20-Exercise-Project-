@@ -1,0 +1,70 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">{{title()}}</h1>
+      <p class="hero-subtitle">Modern web development with the latest Angular features</p>
+      <div class="hero-buttons">
+        <button mat-raised-button color="primary" routerLink="/about">Learn More</button>
+        <button mat-stroked-button routerLink="/contact">Get Started</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <mat-icon class="hero-icon">rocket_launch</mat-icon>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+      @for(feature of features; track feature.id) {
+      <mat-card class="feature-card" appearance="outlined">
+        <mat-card-header>
+          <mat-icon mat-card-avatar [ngStyle]="{'color': feature.color}">{{feature.icon}}</mat-icon>
+          <mat-card-title>{{feature.title}}</mat-card-title>
+          <mat-card-subtitle>{{feature.subtitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{feature.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button [ngStyle]="{'color': feature.color}">Learn More</button>
+        </mat-card-actions>
+      </mat-card>
+      }
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <h2 class="section-title">Project Statistics</h2>
+    <div class="stats-grid">
+      @for(stat of stats; track stat.label) {
+      <div class="stat-card">
+        <div class="stat-number">{{stat.value}}</div>
+        <div class="stat-label">{{stat.label}}</div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- Recent Updates Section -->
+  <section class="updates-section">
+    <h2 class="section-title">Recent Updates</h2>
+    <div class="updates-timeline">
+      @for(update of recentUpdates; track update.id) {
+      <div class="timeline-item">
+        <div class="timeline-marker"
+          [ngStyle]="{'background-color': update.type === 'feature' ? '#4caf50' : update.type === 'fix' ? '#ff9800' : '#2196f3'}">
+        </div>
+        <div class="timeline-content">
+          <h4>{{update.title}}</h4>
+          <p>{{update.description}}</p>
+          <span class="timeline-date">{{update.date}}</span>
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+</div>

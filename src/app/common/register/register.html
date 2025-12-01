@@ -1,0 +1,74 @@
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h1>Create Account</h1>
+            <p>Join us today and get started</p>
+        </div>
+
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form-row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Enter username" formControlName="username">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput placeholder="Enter full name" formControlName="name">
+                    <mat-icon matSuffix>badge</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Email Address</mat-label>
+                <input matInput type="email" placeholder="Enter email" formControlName="email">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Enter password" formControlName="password">
+                <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+
+            <div class="form-row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role">
+                        @for (role of roles; track role) {
+                        <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                    <mat-icon matSuffix>work</mat-icon>
+                </mat-form-field>
+
+                <div class="gender-group">
+                    <label class="gender-label">Gender</label>
+                    <mat-radio-group formControlName="gender" class="gender-options">
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <mat-checkbox formControlName="terms" color="primary">
+                    I agree to the Terms & Conditions
+                </mat-checkbox>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" mat-raised-button color="primary" class="register-btn"
+                    [disabled]="registerForm.invalid">
+                    Create Account
+                </button>
+
+                <div class="login-link">
+                    <span>Already have an account?</span>
+                    <a mat-button routerLink="/login">Sign In</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

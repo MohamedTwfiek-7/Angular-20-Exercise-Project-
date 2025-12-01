@@ -1,0 +1,173 @@
+<div class="customer-container">
+    <!-- Header Section -->
+    <section class="customer-header">
+        <div class="header-content">
+            <h1 class="page-title">Customer Management</h1>
+            <p class="page-subtitle">Manage customer data, track interactions, and maintain relationships</p>
+        </div>
+        <div class="header-actions">
+            <button mat-raised-button color="primary" routerLink="/customer/add" class="add-btn">
+                <mat-icon>add</mat-icon>
+                Add Customer
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            @for(stat of customerStats; track stat.label) {
+            <mat-card class="stat-card" appearance="outlined">
+                <div class="stat-content">
+                    <div class="stat-icon" [ngStyle]="{'background-color': stat.color}">
+                        <mat-icon>{{stat.icon}}</mat-icon>
+                    </div>
+                    <div class="stat-details">
+                        <div class="stat-number">{{stat.value}}</div>
+                        <div class="stat-label">{{stat.label}}</div>
+                    </div>
+                </div>
+                <div class="stat-trend" [ngClass]="stat.trend">
+                    <mat-icon>{{stat.trend === 'up' ? 'trending_up' : 'trending_down'}}</mat-icon>
+                    <span>{{stat.change}}</span>
+                </div>
+            </mat-card>
+            }
+        </div>
+    </section>
+
+    <!-- Customer Management Tools -->
+    <section class="tools-section">
+        <div class="tools-header">
+            <h2>Customer Tools</h2>
+            <div class="search-filter">
+                <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Search customers</mat-label>
+                    <input matInput [(ngModel)]="searchTerm" placeholder="Enter name or email">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="filter-field">
+                    <mat-label>Filter by status</mat-label>
+                    <mat-select [(ngModel)]="filterStatus">
+                        <mat-option value="all">All Customers</mat-option>
+                        <mat-option value="active">Active</mat-option>
+                        <mat-option value="inactive">Inactive</mat-option>
+                        <mat-option value="pending">Pending</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Customer List -->
+        <div class="customer-grid">
+            @for(customer of filteredCustomers; track customer.id) {
+            <mat-card class="customer-card" appearance="outlined">
+                <mat-card-header>
+                    <div mat-card-avatar class="customer-avatar" [ngStyle]="{'background-color': customer.avatarColor}">
+                        <span>{{customer.name.charAt(0)}}</span>
+                    </div>
+                    <mat-card-title>{{customer.name}}</mat-card-title>
+                    <mat-card-subtitle>{{customer.email}}</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div class="customer-info">
+                        <div class="info-row">
+                            <mat-icon>phone</mat-icon>
+                            <span>{{customer.phone}}</span>
+                        </div>
+                        <div class="info-row">
+                            <mat-icon>location_on</mat-icon>
+                            <span>{{customer.location}}</span>
+                        </div>
+                        <div class="info-row">
+                            <mat-icon>event</mat-icon>
+                            <span>Joined {{customer.joinDate}}</span>
+                        </div>
+                        <div class="status-badge" [ngClass]="customer.status">
+                            {{customer.status | titlecase}}
+                        </div>
+                    </div>
+
+                    <div class="customer-metrics">
+                        <div class="metric">
+                            <span class="metric-value">${{customer.totalSpent}}</span>
+                            <span class="metric-label">Total Spent</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">{{customer.orders}}</span>
+                            <span class="metric-label">Orders</span>
+                        </div>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-button color="primary" [routerLink]="['/customer/edit', customer.id]">
+                        <mat-icon>edit</mat-icon>
+                        Edit
+                    </button>
+                    <button mat-button>
+                        <mat-icon>visibility</mat-icon>
+                        View
+                    </button>
+                    <button mat-button color="warn" (click)="deleteCustomer(customer.id)">
+                        <mat-icon>delete</mat-icon>
+                        Delete
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            }
+        </div>
+
+        <!-- Empty State -->
+        @if (filteredCustomers.length === 0) {
+        <div class="empty-state">
+            <mat-icon class="empty-icon">people_outline</mat-icon>
+            <h3>No customers found</h3>
+            <p>Try adjusting your search criteria or add a new customer to get started.</p>
+            <button mat-raised-button color="primary" routerLink="/customer/add">
+                <mat-icon>add</mat-icon>
+                Add First Customer
+            </button>
+        </div>
+        }
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+            <button mat-stroked-button class="action-btn">
+                <mat-icon>file_download</mat-icon>
+                Export Data
+            </button>
+            <button mat-stroked-button class="action-btn">
+                <mat-icon>email</mat-icon>
+                Send Newsletter
+            </button>
+            <button mat-stroked-button class="action-btn">
+                <mat-icon>analytics</mat-icon>
+                View Reports
+            </button>
+            <button mat-stroked-button class="action-btn">
+                <mat-icon>backup</mat-icon>
+                Backup Data
+            </button>
+        </div>
+    </section>
+
+    <!-- Development Note -->
+    @if (name) {
+    <div class="dev-note">
+        <mat-card appearance="outlined">
+            <mat-card-content>
+                <h4>Development Mode</h4>
+                <p>Form state: {{name}}</p>
+                <button mat-button (click)="name = ''" color="accent">Clear</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    }
+
+    <router-outlet></router-outlet>
+</div>

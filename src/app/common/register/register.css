@@ -1,0 +1,127 @@
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    padding: 20px;
+}
+
+.register-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.register-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.register-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row mat-form-field {
+    flex: 1;
+}
+
+.register-form mat-form-field {
+    width: 100%;
+}
+
+.gender-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gender-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.gender-options {
+    display: flex;
+    gap: 16px;
+}
+
+.terms-section {
+    padding: 16px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.login-link {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-link span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #2196f3;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .register-card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .register-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gender-options {
+        justify-content: space-around;
+    }
+}
